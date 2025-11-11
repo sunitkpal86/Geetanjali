@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+.menu-enter {
+  transition: all 0.3s ease-in-out;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.menu-enter-active {
+  transform: scaleY(1);
+}
