@@ -1,64 +1,75 @@
-<div class="min-h-screen bg-gray-50 p-64">
-  <!-- 🔍 Filter & Sort Section -->
-  <div
-    class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-white p-4 rounded-xl shadow-sm"
-  >
+<div class="min-h-screen bg-gray-50 p-4 md:p-6">
+  <!-- Page Header -->
+  <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+    Products
+  </h1>
+
+  <!-- Filters -->
+  <div class="bg-white p-3 md:p-4 rounded-lg shadow flex flex-col md:flex-row md:items-center gap-3 md:gap-4 sticky top-0 z-50">
+    
     <!-- Search -->
     <input
       type="text"
-      [(ngModel)]="searchText"
+      [(ngModel)]="searchTerm"
       placeholder="Search products..."
-      class="w-full sm:w-1/3 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+      class="w-full px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
 
-    <!-- Category Filter -->
-    <select
-      [(ngModel)]="selectedCategory"
-      class="w-full sm:w-1/4 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-    >
-      <option value="">All Categories</option>
-      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
-    </select>
+    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+      <!-- Category -->
+      <select
+        [(ngModel)]="selectedCategory"
+        class="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      >
+        <option value="">All Categories</option>
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option>
+      </select>
 
-    <!-- Sort -->
-    <select
-      [(ngModel)]="sortOrder"
-      class="w-full sm:w-1/4 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-    >
-      <option value="">Sort by</option>
-      <option value="low-high">Price: Low to High</option>
-      <option value="high-low">Price: High to Low</option>
-    </select>
+      <!-- Sort -->
+      <select
+        [(ngModel)]="sortBy"
+        class="px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      >
+        <option value="name">Sort by Name</option>
+        <option value="priceLowHigh">Price: Low to High</option>
+        <option value="priceHighLow">Price: High to Low</option>
+      </select>
+    </div>
   </div>
 
-  <!-- 🛒 Product Grid -->
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-  >
+  <!-- Product Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
     <div
-      *ngFor="let product of filteredProducts"
-      class="bg-white rounded-2xl shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200 overflow-hidden"
+      *ngFor="let product of filteredProducts()"
+      class="bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden"
     >
-      <img
-        [src]="product.image"
-        [alt]="product.name"
-        class="h-56 w-full object-cover"
-      />
+      <!-- Image -->
+      <img [src]="product.image" alt="" class="w-full h-40 sm:h-48 object-cover" />
 
-      <div class="p-4">
-        <h2 class="text-lg font-semibold text-gray-800 mb-2">
-          {{ product.name }}
-        </h2>
-        <p class="text-gray-500 text-sm mb-3">{{ product.description }}</p>
-        <!-- <div class="flex items-center justify-between">
-          <span class="text-xl font-bold text-blue-600">₹{{ product.price }}</span>
-          <button
-            class="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Add to Cart
-          </button>
+      <!-- Card Body -->
+      <div class="p-3 sm:p-4">
+        <h2 class="text-base sm:text-lg font-semibold text-gray-800">{{ product.name }}</h2>
+        <p class="text-gray-500 text-xs sm:text-sm">{{ product.description }}</p>
+
+        <!-- <p class="text-indigo-600 font-bold text-lg mt-1 sm:mt-2">₹{{ product.price }}</p> -->
+
+        <!-- <div class="flex items-center text-xs sm:text-sm mt-1">
+          ⭐ {{ product.rating }}/5
         </div> -->
+
+        <button
+          class="w-full mt-3 bg-indigo-600 text-white py-2 text-sm rounded-lg hover:bg-indigo-700 active:scale-95 transition"
+        >
+          View Product Details
+        </button>
       </div>
     </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="filteredProducts().length === 0" class="text-center text-gray-500 py-10">
+    No products found.
   </div>
 </div>

@@ -18,13 +18,29 @@ interface Product {
 })
 export class ProductList {
 
+  searchTerm = '';
+  selectedCategory = '';
+  sortBy = 'name';
+
   products: Product[] = [];
-  filteredProducts: Product[] = [];
+  //filteredProducts: Product[] = [];
+
+  filteredProducts() {
+    let result = this.products.filter(p => 
+      p.name.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
+      (!this.selectedCategory || p.category === this.selectedCategory)
+    );
+
+    if (this.sortBy === 'priceLowHigh') result.sort((a, b) => a.price - b.price);
+    if (this.sortBy === 'priceHighLow') result.sort((a, b) => b.price - a.price);
+
+    return result;
+  }
 
   categories: string[] = ['Machinery', 'Metal', 'Electrical', 'Construction'];
 
   searchText: string = '';
-  selectedCategory: string = '';
+  //selectedCategory: string = '';
   sortOrder: string = '';
 
   ngOnInit() {
@@ -196,7 +212,7 @@ export class ProductList {
       filtered = filtered.sort((a, b) => b.price - a.price);
     }
 
-    this.filteredProducts = filtered;
+   // this.filteredProducts = filtered;
   }
 
   // Watch for any changes in filters
