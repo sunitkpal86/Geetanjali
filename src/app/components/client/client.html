@@ -1,0 +1,34 @@
+<div class="min-h-screen bg-gray-50 p-6">
+  <!-- Page Title -->
+  <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">
+    Our Clients
+  </h1>
+
+  <!-- Optional Subtitle -->
+  <p class="text-gray-600 text-center max-w-2xl mx-auto mb-10">
+    We are trusted by leading organizations across industries worldwide.
+  </p>
+
+  <!-- Client Grid -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+    
+    <div
+      *ngFor="let client of clients"
+      class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition border flex flex-col items-center justify-center text-center"
+    >
+      <!-- Logo -->
+      <img
+        [src]="client.logo"
+        [alt]="client.name"
+        class="h-60 w-auto object-contain mb-3"
+      />
+
+      <!-- Client Name -->
+      <p class="font-medium text-gray-700 text-sm md:text-base">
+        <a href={{client.url}}>{{ client.name }}</a>
+      </p>
+
+    </div>
+
+  </div>
+</div>
