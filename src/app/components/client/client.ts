@@ -24,6 +24,7 @@ export class Client {
     { name: 'DS Canned Foods', logo: 'assets/dscfoods.png', url:'https://dscfoods.in' },
     { name: 'ELMAC', logo: 'assets/ELMAC.png', url:'#' },
     { name: 'CavinKare', logo: 'assets/cavinkare.png', url:'https://cavinkare.com' },
+    // { name: 'CavinKare', logo: 'assets/cavinkare.png', url:'https://cavinkare.com' },
     { name: 'Kissan', logo: 'assets/kissan.png', url:'https://www.kissan.in/home.html' },
   ];
 }
