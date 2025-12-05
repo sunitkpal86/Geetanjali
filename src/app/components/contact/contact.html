@@ -56,22 +56,22 @@
       <div class="bg-white shadow-lg rounded-xl p-8">
         <h2 class="text-2xl font-semibold text-blue-700 mb-6">Send a Message</h2>
 
-        <form class="space-y-4">
+        <form class="space-y-4" (ngSubmit)="send()">
           <div>
             <label class="block text-sm font-semibold mb-1">Full Name</label>
-            <input type="text" placeholder="Enter your name"
+            <input type="text" placeholder="Enter your name" [(ngModel)]="name" name="name"
               class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
           </div>
 
           <div>
             <label class="block text-sm font-semibold mb-1">Email</label>
-            <input type="email" placeholder="Enter your email"
+            <input type="email" placeholder="Enter your email" [(ngModel)]="email" name="email"
               class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
           </div>
 
           <div>
             <label class="block text-sm font-semibold mb-1">Message</label>
-            <textarea rows="5" placeholder="Type your message"
+            <textarea rows="5" placeholder="Type your message" [(ngModel)]="message" name="message"
               class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
           </div>
 
