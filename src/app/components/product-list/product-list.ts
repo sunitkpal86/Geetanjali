@@ -161,7 +161,7 @@ export class ProductList {
         name: 'Automatic FFS Machine For Liquid',
         description: 'The Automatic Liquid Packaging Machine is designed to pack various kinds of liquids as water, juices, vegetable oil, milk, soup, beverage, vinegar, etc. Automatic liquid packing machine is capable of making bags, measuring, filling, sealing, cutting and counting. The whole process operates automatically.',
         price: 85000,
-        image: 'assets/p3.png',
+        image: 'assets/p3.jpg',
         category: 'Machinery'
       },
       {
@@ -175,14 +175,14 @@ export class ProductList {
         name: 'Automatic Sealing Machine',
         description: 'Plastic sealing machines also find uses in the packaging industry as they are much more affordable for packing than other materials. Hardware products like nuts and screws can be packed with automatic sealing machines.',
         price: 22000,
-        image: 'assets/p5.png',
+        image: 'assets/p5.jpg',
         category: 'Construction'
       },
       {
         name: 'Candy Packing Machine',
         description: 'Packaging machines are used to package products or components. This product area includes equipment that forms, fills, seals, wraps, cleans, and packages at different levels of automation. Packaging machines also include related machinery for sorting, counting, and accumulating. There are many different package types.',
         price: 22000,
-        image: 'assets/p6.png',
+        image: 'assets/p6.jpg',
         category: 'Machinery'
       }
     ];
