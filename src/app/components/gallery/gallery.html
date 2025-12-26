@@ -1,0 +1,53 @@
+<div class="max-w-9xl mx-auto px-4 py-20">
+  
+  <!-- Page Title -->
+  <h2 class="text-3xl font-bold text-center mb-8">Photo Gallery</h2>
+
+  <!-- Gallery Grid -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-15">
+    <div
+      *ngFor="let img of images"
+      (click)="open(img)"
+      class="cursor-pointer group relative overflow-hidden rounded-xl shadow-md"
+    >
+      <img
+        [src]="img.src"
+        [alt]="img.title"
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      />
+
+      <!-- Overlay -->
+      <div
+        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center"
+      >
+        <span class="text-white font-semibold text-lg">
+          View
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Image Modal -->
+<div
+  *ngIf="selectedImage"
+  class="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+>
+  <div class="relative max-w-3xl w-full px-4">
+    <button
+      (click)="close()"
+      class="absolute -top-10 right-0 text-white text-3xl"
+    >
+      ✕
+    </button>
+
+    <img
+      [src]="selectedImage.src"
+      class="w-full rounded-xl shadow-lg"
+    />
+
+    <p class="text-center text-white mt-4 text-lg">
+      {{ selectedImage.title }}
+    </p>
+  </div>
+</div>
